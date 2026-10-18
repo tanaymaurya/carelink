@@ -1,0 +1,36 @@
+# CareLink AI feature declarations.
+version: 1
+features:
+- id: symptom-triage
+  name: Symptom triage
+  owner: clinical-ai@carelink.example
+  intended_use: Suggest an urgency level from the symptoms a patient types in. A nurse confirms every suggestion.
+  affected_persons: [patients]
+  data_categories: [health, identity]
+  interaction: direct
+  decision_effect: significant
+  paths: ["services/api/triage.py"]
+  models: ["gpt-4o"]
+  risk_class: high
+- id: visit-notes
+  name: Visit note summaries
+  owner: clinical-ai@carelink.example
+  intended_use: Draft a summary of a clinician's visit notes for the clinician to edit.
+  affected_persons: [patients]
+  data_categories: [health, free-text]
+  interaction: none
+  decision_effect: advisory
+  paths: ["services/notes/**"]
+  models: ["gpt-4o"]
+  risk_class: limited
+- id: patient-assistant
+  name: Patient portal assistant
+  owner: portal@carelink.example
+  intended_use: Answer patients' questions about appointments and billing on the portal. No medical advice.
+  affected_persons: [patients]
+  data_categories: [contact, free-text]
+  interaction: direct
+  decision_effect: none
+  paths: ["web/src/lib/assistant.ts", "web/src/lib/moderation.ts"]
+  models: ["gpt-4o-mini", "claude-haiku-4-5"]
+  risk_class: limited

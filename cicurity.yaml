@@ -1,0 +1,25 @@
+# CareLink: synthetic telehealth company used to evaluate the scanner (A) and the policy verifier (B).
+version: 1
+declarations: [ai-features.yaml]
+llm:
+  backend: replay            # offline: answers come from llm-replay/, written by eval/llm_stub.py
+  model: claude-sonnet-5-5
+  cache_dir: llm-replay
+gateways:
+  - id: llm_gateway
+    paths: ["lib/llm_gateway.py"]
+    modules: ["lib.llm_gateway"]
+    functions: ["chat", "embed"]
+
+# Read by cic-policy (part B); part A ignores this key.
+policy:
+  org: carelink
+  approved_externals:
+    - ext:ai-provider:openai
+    - ext:ai-provider:anthropic
+    - ext:payments:stripe
+    - ext:email:sendgrid
+    - ext:storage:boto3
+  reviewer_roles:
+    privacy: dpo@carelink.example
+    ai-governance: ai-council@carelink.example

@@ -1,0 +1,12 @@
+# Deployable units. `db` and `cache` are images only.
+services:
+  api:
+    build: ./services/api
+    ports: ["8000:8000"]
+  portal:
+    build: ./web
+    ports: ["3000:3000"]
+  db:
+    image: postgres:16
+  cache:
+    image: redis:7

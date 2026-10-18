@@ -1,0 +1,4 @@
+# written by ci-curity when it scans this repo
+.cicurity/
+llm-replay/
+cicurity-cases.jsonl
