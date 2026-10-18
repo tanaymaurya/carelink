@@ -1,7 +1,7 @@
 # CareLink (synthetic)
 
 CareLink is a made-up telehealth company. Nothing here runs, and there is no real company, patient or data
-behind it. The repository exists to test [ci-curity](https://github.com/tanaymaurya/ci-curity): its scanner
+behind it. The repository exists to test ci-curity: its scanner
 builds a knowledge graph of this code, and its policy verifier turns that graph into review cases.
 
 The code is written so that every kind of node the scanner can produce appears at least once, together with
